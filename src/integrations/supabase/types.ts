@@ -14,7 +14,249 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      categories: {
+        Row: {
+          color: string
+          created_at: string
+          id: string
+          name: string
+          user_id: string
+        }
+        Insert: {
+          color?: string
+          created_at?: string
+          id?: string
+          name: string
+          user_id: string
+        }
+        Update: {
+          color?: string
+          created_at?: string
+          id?: string
+          name?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      chat_messages: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          role: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          role: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          role?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      events: {
+        Row: {
+          created_at: string
+          ends_at: string
+          id: string
+          kind: string
+          notes: string | null
+          starts_at: string
+          title: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          ends_at: string
+          id?: string
+          kind?: string
+          notes?: string | null
+          starts_at: string
+          title: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          ends_at?: string
+          id?: string
+          kind?: string
+          notes?: string | null
+          starts_at?: string
+          title?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      notifications: {
+        Row: {
+          body: string | null
+          created_at: string
+          id: string
+          kind: string
+          read: boolean
+          title: string
+          user_id: string
+        }
+        Insert: {
+          body?: string | null
+          created_at?: string
+          id?: string
+          kind?: string
+          read?: boolean
+          title: string
+          user_id: string
+        }
+        Update: {
+          body?: string | null
+          created_at?: string
+          id?: string
+          kind?: string
+          read?: boolean
+          title?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          display_name: string | null
+          id: string
+          notifications_enabled: boolean
+          theme: string
+          updated_at: string
+          work_end: string
+          work_start: string
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string | null
+          id: string
+          notifications_enabled?: boolean
+          theme?: string
+          updated_at?: string
+          work_end?: string
+          work_start?: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          notifications_enabled?: boolean
+          theme?: string
+          updated_at?: string
+          work_end?: string
+          work_start?: string
+        }
+        Relationships: []
+      }
+      research: {
+        Row: {
+          created_at: string
+          id: string
+          insights: string[]
+          key_points: string[]
+          questions: string[]
+          recommendations: string[]
+          summary: string | null
+          topic: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          insights?: string[]
+          key_points?: string[]
+          questions?: string[]
+          recommendations?: string[]
+          summary?: string | null
+          topic: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          insights?: string[]
+          key_points?: string[]
+          questions?: string[]
+          recommendations?: string[]
+          summary?: string | null
+          topic?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      tasks: {
+        Row: {
+          ai_reason: string | null
+          category: string
+          completed_at: string | null
+          created_at: string
+          description: string | null
+          due_date: string | null
+          due_time: string | null
+          duration_minutes: number
+          id: string
+          priority: string
+          recurrence: string
+          scheduled_end: string | null
+          scheduled_start: string | null
+          status: string
+          tags: string[]
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          ai_reason?: string | null
+          category?: string
+          completed_at?: string | null
+          created_at?: string
+          description?: string | null
+          due_date?: string | null
+          due_time?: string | null
+          duration_minutes?: number
+          id?: string
+          priority?: string
+          recurrence?: string
+          scheduled_end?: string | null
+          scheduled_start?: string | null
+          status?: string
+          tags?: string[]
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          ai_reason?: string | null
+          category?: string
+          completed_at?: string | null
+          created_at?: string
+          description?: string | null
+          due_date?: string | null
+          due_time?: string | null
+          duration_minutes?: number
+          id?: string
+          priority?: string
+          recurrence?: string
+          scheduled_end?: string | null
+          scheduled_start?: string | null
+          status?: string
+          tags?: string[]
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
