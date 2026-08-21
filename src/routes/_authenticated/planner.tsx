@@ -11,9 +11,8 @@ import { useSyncAll, useTasks, PRIORITY_META, type Priority } from "@/lib/worksp
 import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/_authenticated/planner")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    scope: search["scope"] === "week" ? ("week" as const) : ("day" as const),
-  }),
+  validateSearch: (search: Record<string, unknown>): { scope?: "day" | "week" } =>
+    search["scope"] === "week" ? { scope: "week" } : search["scope"] === "day" ? { scope: "day" } : {},
   head: () => ({
     meta: [
       { title: "AI Planner — TaskFlow AI" },
@@ -27,7 +26,7 @@ export const Route = createFileRoute("/_authenticated/planner")({
 
 function PlannerPage() {
   const { scope: initialScope } = Route.useSearch();
-  const [scope, setScope] = useState<"day" | "week">(initialScope);
+  const [scope, setScope] = useState<"day" | "week">(initialScope ?? "day");
   const [instructions, setInstructions] = useState("");
   const [plan, setPlan] = useState<PlanResult | null>(null);
   const [loading, setLoading] = useState(false);

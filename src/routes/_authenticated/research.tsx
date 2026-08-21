@@ -50,7 +50,10 @@ function ResearchPage() {
   const { data: history = [] } = useResearch();
 
   const go = async () => {
-    if (!topic.trim()) return toast.error("Enter a topic or question");
+    if (!topic.trim()) {
+      toast.error("Enter a topic or question");
+      return;
+    }
     setLoading(true);
     try {
       setResult(await run({ data: { topic, context } }));

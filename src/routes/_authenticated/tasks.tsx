@@ -18,7 +18,8 @@ import {
 } from "@/lib/workspace";
 
 export const Route = createFileRoute("/_authenticated/tasks")({
-  validateSearch: (search: Record<string, unknown>) => ({ q: (search["q"] as string) ?? "" }),
+  validateSearch: (search: Record<string, unknown>): { q?: string } =>
+    search["q"] ? { q: String(search["q"]) } : {},
   head: () => ({
     meta: [
       { title: "My Tasks — TaskFlow AI" },
@@ -39,7 +40,7 @@ function TasksPage() {
   const toggle = useToggleTask();
   const remove = useDeleteTask();
 
-  const [query, setQuery] = useState(q);
+  const [query, setQuery] = useState(q ?? "");
   const [category, setCategory] = useState("all");
   const [priority, setPriority] = useState("all");
   const [status, setStatus] = useState("all");
@@ -96,7 +97,7 @@ function TasksPage() {
           <SelectContent>
             <SelectItem value="all">All priorities</SelectItem>
             {["urgent", "high", "medium", "low"].map((p) => (
-              <SelectItem key={p} value={p}>{p[0].toUpperCase() + p.slice(1)}</SelectItem>
+              <SelectItem key={p} value={p}>{p.charAt(0).toUpperCase() + p.slice(1)}</SelectItem>
             ))}
           </SelectContent>
         </Select>

@@ -150,7 +150,7 @@ export function TaskDialog({ open, onOpenChange, task, defaults }: Props) {
                 <SelectContent>
                   {["low", "medium", "high", "urgent"].map((p) => (
                     <SelectItem key={p} value={p}>
-                      {p[0].toUpperCase() + p.slice(1)}
+                      {p.charAt(0).toUpperCase() + p.slice(1)}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -191,7 +191,7 @@ export function TaskDialog({ open, onOpenChange, task, defaults }: Props) {
                 <SelectContent>
                   {["none", "daily", "weekly", "monthly"].map((r) => (
                     <SelectItem key={r} value={r}>
-                      {r === "none" ? "Does not repeat" : r[0].toUpperCase() + r.slice(1)}
+                      {r === "none" ? "Does not repeat" : r.charAt(0).toUpperCase() + r.slice(1)}
                     </SelectItem>
                   ))}
                 </SelectContent>
